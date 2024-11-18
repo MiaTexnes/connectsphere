@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css"
+    />
+    <script src="../index.js" defer></script>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+  >
+    <header
+      class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full fixed top-0"
+    >
+      <nav class="container mx-auto flex justify-between items-center p-4">
+        <a href="/" class="text-3xl font-bold italic text-black"
+          >ConnectSphere</a
+        >
+        <div class="hidden md:flex items-center space-x-1">
+          <a
+            href="../feed/index.html"
+            class="py-2 px-4 text-black hover:text-green-500"
+            >Feed</a
+          >
+          <a
+            href="../profile/index.html"
+            class="py-2 px-4 text-black hover:text-green-500"
+            >Profile</a
+          >
+        </div>
+
+        <div class="hidden md:flex items-center space-x-3">
+          <a
+            href="#"
+            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Log In</a
+          >
+          <a
+            href="#"
+            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Sign Up</a
+          >
+        </div>
+
+        <div class="md:hidden">
+          <button id="menu-btn" class="text-black focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col items-center space-y-4 p-4">
+          <li>
+            <a
+              href="../index.html"
+              class="block py-2 px-4 text-black hover:text-green-500"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              href="../feed/index.html"
+              class="block py-2 px-4 text-gray-500 hover:text-black"
+              >Feed</a
+            >
+          </li>
+          <li>
+            <a
+              href="../profile/index.html"
+              class="block py-2 px-4 text-gray-500 hover:text-black"
+              >Profile</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="w-full p-4 mt-16">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex flex-col md:flex-row items-center">
+          <img
+            src="../images/profile.jpg"
+            alt="Profile Picture"
+            class="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-4"
+          />
+          <div>
+            <h2 class="text-2xl font-bold">Jane Doe</h2>
+            <p class="text-gray-600">Age: 34</p>
+            <p class="text-gray-600">Mother of two wonderful kids</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css"
+    />
+    <script src="../index.js" defer></script>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+  >
+    <header
+      class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full"
+    >
+      <nav class="container mx-auto flex justify-between items-center p-4">
+        <a href="/" class="text-3xl font-bold italic text-black"
+          >ConnectSphere</a
+        >
+        <div class="hidden md:flex items-center space-x-1">
+          <a
+            href="../feed/index.html"
+            class="py-2 px-4 text-black hover:text-green-500"
+            >Feed</a
+          >
+          <a
+            href="../profile/index.html"
+            class="py-2 px-4 text-black hover:text-green-500"
+            >Profile</a
+          >
+        </div>
+
+        <div class="hidden md:flex items-center space-x-3">
+          <a
+            href="#"
+            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Log In</a
+          >
+          <a
+            href="#"
+            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Sign Up</a
+          >
+        </div>
+
+        <div class="md:hidden">
+          <button id="menu-btn" class="text-black focus:outline-none">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col items-center space-y-4 p-4">
+          <li>
+            <a
+              href="../index.html"
+              class="block py-2 px-4 text-black hover:text-green-500"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              href="../feed/index.html"
+              class="block py-2 px-4 text-gray-500 hover:text-black"
+              >Feed</a
+            >
+          </li>
+          <li>
+            <a
+              href="../profile/index.html"
+              class="block py-2 px-4 text-gray-500 hover:text-black"
+              >Profile</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="w-full p-4">
+      <h2 class="text-2xl mb-4">Posts</h2>
+      <div class="flex flex-col md:flex-row justify-between mb-4">
+        <input
+          type="text"
+          placeholder="Search posts..."
+          class="p-2 border rounded w-full md:w-1/2 mb-2 md:mb-0"
+        />
+        <select class="p-2 border rounded w-full md:w-1/4">
+          <option value="latest">Latest</option>
+          <option value="oldest">Oldest</option>
+          <option value="popular">Most Popular</option>
+        </select>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Post Thumbnails -->
+        <div class="bg-white p-4 rounded shadow-md">
+          <img
+            src="../images/post1.jpg"
+            alt="Post 1"
+            class="w-full h-48 object-cover rounded"
+          />
+          <h3 class="text-xl mt-2">Post Title 1</h3>
+        </div>
+        <div class="bg-white p-4 rounded shadow-md">
+          <img
+            src="../images/post2.jpg"
+            alt="Post 2"
+            class="w-full h-48 object-cover rounded"
+          />
+          <h3 class="text-xl mt-2">Post Title 2</h3>
+        </div>
+        <div class="bg-white p-4 rounded shadow-md">
+          <img
+            src="../images/post3.jpg"
+            alt="Post 3"
+            class="w-full h-48 object-cover rounded"
+          />
+          <h3 class="text-xl mt-2">Post Title 3</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full p-4">
+      <h2 class="text-2xl mb-4">Create a New Post</h2>
+      <form class="bg-white p-6 rounded shadow-md">
+        <div class="mb-4">
+          <label for="title" class="block text-gray-700 font-bold mb-2"
+            >Title</label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="image" class="block text-gray-700 font-bold mb-2"
+            >Image URL</label
+          >
+          <input
+            type="text"
+            id="image"
+            name="image"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="content" class="block text-gray-700 font-bold mb-2"
+            >Content</label
+          >
+          <textarea
+            id="content"
+            name="content"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
+        >
+          Create Post
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
