@@ -3,16 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Log In | ConnectSphere</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
     <script src="index.js" defer></script>
-
   </head>
-  <body class="flex flex-col md:flex-row items-center justify-center h-screen">
+  <body
+    class="flex flex-col md:flex-row items-center justify-center h-screen index-background"
+  >
     <header class="w-full md:w-1/2 text-left p-4">
       <h1 class="text-3xl md:text-6xl">ConnectSphere</h1>
       <p class="text-1xl md:text-2xl text-left p-4 italic">
@@ -20,50 +35,61 @@
       </p>
     </header>
 
-    <div class="flex justify-center w-full p-4">
-      <form
-        action="profile/index.html"
-        class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
-      >
-        <div class="mb-4">
-          <label for="username" class="block text-gray-700 font-bold mb-2"
-            >Username</label
-          >
-          <input
-            type="text"
-            name="username"
-            id="username"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          <p class="text-red-500 text-xs italic hidden" id="username-error">
-            Please enter a username
-          </p>
-        </div>
-        <div class="mb-6">
-          <label for="password" class="block text-gray-700 font-bold mb-2"
-            >Password</label
-          >
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
-            minlength="8"
-          />
-          <p class="text-red-500 text-xs italic hidden" id="password-error">
-            Please enter a password
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <button
-            type="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+    <main class="w-full md:w-1/2 p-4">
+      <section class="flex justify-center w-full p-4">
+        <form
+          action="/profile"
+          class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
+        >
+          <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2"
+              >Username</label
+            >
+            <input
+              type="text"
+              name="username"
+              id="username"
+              required
+              minlength="3"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <p class="text-red-500 text-xs italic hidden" id="username-error">
+              Please enter a username
+            </p>
+          </div>
+          <div class="mb-6">
+            <label for="password" class="block text-gray-700 font-bold mb-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+              minlength="8"
+            />
+            <p class="text-red-500 text-xs italic hidden" id="password-error">
+              Please enter a password
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <button
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+            >
+              Log in
+            </button>
+            <button
+              type="button"
+              id="create-user-btn"
+              class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none ml-4"
+            >
+              Create User
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

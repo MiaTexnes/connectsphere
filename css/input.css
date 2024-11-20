@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+.index-background {
   background-image: url("/images/background-sphere.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.active {
+  font: bold;
+  color: green;
+  border-bottom: 1px solid green;
 }
