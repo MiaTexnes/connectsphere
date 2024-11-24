@@ -86,7 +86,7 @@
 
     <main class="w-full p-4 mt-16 container max-w-4xl">
       <section class="bg-white p-6 rounded-lg shadow-md">
-        <div class="flex flex-col md:flex-row items-center">
+        <div class="flex flex-col md:flex-row items-center justify-between">
           <img
             src="/images/mary.jpeg"
             alt="Profile Picture"
@@ -100,11 +100,30 @@
             <p class="text-gray-600">Hobbies: Hiking, Reading, Cooking</p>
             <p class="text-gray-600">Location: San Francisco, CA</p>
           </div>
+          <div class="bg-white p-6 mt-6">
+            <h2 class="text-xl font-bold mb-4">Followers</h2>
+            <p class="text-gray-600 mb-4">235 Followers</p>
+            <h2 class="text-xl font-bold mb-4">Following</h2>
+            <p class="text-gray-600 mb-4">194 Following</p>
+          </div>
+        </div>
+        <div class="flex justify-center mt-6 space-x-4">
+          <button
+            type="button"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+          >
+            Follow
+          </button>
+          <button
+            type="button"
+            class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+          >
+            Unfollow
+          </button>
         </div>
       </section>
-
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
-        <h2 class="text-xl font-bold mb-4">About Me</h2>
+        <h3 class="text-xl font-bold mb-4">About Me</h3>
         <p class="text-gray-600">
           Hi, I'm Jane! I'm a passionate software engineer with over 10 years of
           experience in the tech industry. I love exploring new technologies and
@@ -115,7 +134,6 @@
           individuals and share knowledge and experiences.
         </p>
       </section>
-
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
         <h3 class="text-xl font-bold mb-4">Skills</h3>
         <ul class="list-disc list-inside text-gray-600">
@@ -129,9 +147,31 @@
       </section>
 
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
-        <h3 class="text-xl font-bold mb-4">Contact</h3>
-        <p class="text-gray-600">Email: jane.doe@example.com</p>
-        <p class="text-gray-600">Phone: (123) 456-7890</p>
+        <h3 class="text-xl font-bold mb-4">Posts</h3>
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">Exploring the Mountains</h4>
+            <p class="text-gray-600">
+              Had an amazing time hiking in the mountains last weekend. The
+              views were breathtaking!
+            </p>
+          </div>
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">New Recipe: Chocolate Cake</h4>
+            <p class="text-gray-600">
+              Tried a new recipe for chocolate cake and it turned out delicious.
+              Highly recommend!
+            </p>
+          </div>
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">Tech Conference 2023</h4>
+            <p class="text-gray-600">
+              Attended the Tech Conference 2023 and learned a lot about the
+              latest trends in technology.
+            </p>
+          </div>
+          <!-- Add more posts as needed -->
+        </div>
       </section>
     </main>
   </body>
