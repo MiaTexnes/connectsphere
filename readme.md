@@ -81,4 +81,3 @@ This project involves building a responsive frontend for a social media applicat
 
 ---
 
-Feel free to reach out if you have any questions or need further clarification on the project requirements. Good luck with your development using Tailwind CSS!
