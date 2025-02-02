@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | ConnectSphere</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/index.js" type="module"></script>
+  </head>
+  <body
+    class="flex flex-col md:flex-row items-center justify-center h-screen index-background"
+  >
+    <header class="w-full md:w-1/2 text-left p-4">
+      <h1 class="text-3xl md:text-6xl">ConnectSphere</h1>
+      <p class="text-1xl md:text-2xl text-left p-4 italic">
+        Shaping the Future of Social Interaction
+      </p>
+    </header>
+
+    <main class="w-full md:w-1/2 p-4">
+      <section class="flex justify-center w-full p-4">
+        <form
+          id="registerForm"
+          action="/profile"
+          class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
+        >
+          <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2"
+              >Username</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="username"
+              required
+              minlength="3"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <p class="text-red-500 text-xs italic hidden" id="username-error">
+              Please enter a username
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="email"
+              class="form-label block text-gray-700 font-bold mb-2"
+              >Email address</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              pattern="^[^@]+@(stud\.|)(noroff\.no)$"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <p class="text-red-500 text-xs italic hidden" id="email-error">
+              Please provide a noroff.no or stud.noroff.no email address
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="block text-gray-700 font-bold mb-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              minlength="8"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <p class="text-red-500 text-xs italic hidden" id="password-error">
+              Please enter a password with at least 8 characters
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="confirm-password"
+              class="block text-gray-700 font-bold mb-2"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              required
+              minlength="8"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <p
+              class="text-red-500 text-xs italic hidden"
+              id="confirm-password-error"
+            >
+              Passwords do not match
+            </p>
+          </div>
+
+          <div class="flex flex-col space-y-4 visible w-full">
+            <button
+              type="submit"
+              id="create-user-btn"
+              class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none w-full"
+            >
+              Create Account
+            </button>
+            <a
+              href="../index.html"
+              class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none w-full text-center"
+            >
+              I already have an account
+            </a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .index-background {
-  background-image: url("/images/background-sphere.jpg");
+  background-image: url("/assets/images/background-sphere.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

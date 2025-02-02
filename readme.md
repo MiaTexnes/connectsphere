@@ -1,18 +1,15 @@
-
-
-
-
-
 # Welcome to ConnectSphere
+
 ## Live Site
+
 https://connect-sphere1.netlify.app/
 
 ConnectSphere is a social interaction platform designed to shape the future of social interaction. This project uses Tailwind CSS for styling and includes responsive design elements.
 
 ## 🔗 Links
+
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://miatexnes.netlify.app/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mia-texnes-847b28bb/)
-
 
 # Social Media App
 
@@ -23,12 +20,14 @@ This project involves building a responsive frontend for a social media applicat
 ## Pages
 
 1. **Authentication Page** (`/index.html`)
+
    - Login and registration form
    - HTML form validation
    - Password minimum length: 8 characters
    - Form action: `/profile`
 
 2. **Feed Page** (`/feed/index.html`)
+
    - List of post thumbnails
    - Search bar
    - Sort options
@@ -80,4 +79,3 @@ This project involves building a responsive frontend for a social media applicat
 - Review peers' Pull Requests
 
 ---
-

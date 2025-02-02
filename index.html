@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In | ConnectSphere</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="../index.js" defer></script>
+    <script src="js/index.js" type="module"></script>
   </head>
   <body
     class="flex flex-col md:flex-row items-center justify-center h-screen index-background"
@@ -16,20 +16,22 @@
         Shaping the Future of Social Interaction
       </p>
     </header>
+
     <main class="w-full md:w-1/2 p-4">
       <section class="flex justify-center w-full p-4">
         <form
+          id="loginForm"
           action="/profile"
           class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
         >
           <div class="mb-4">
-            <label for="username" class="block text-gray-700 font-bold mb-2"
+            <label for="email" class="block text-gray-700 font-bold mb-2"
               >Username</label
             >
             <input
               type="text"
-              name="username"
-              id="username"
+              name="email"
+              id="email"
               required
               minlength="3"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
