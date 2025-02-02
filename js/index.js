@@ -21,7 +21,7 @@ function router() {
     case "/register/index.html":
       registerHandler();
       break;
-    case "/feed/index.html":
+    case "/feed/":
       initializeFeedPage();
       break;
     default:
