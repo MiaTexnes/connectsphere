@@ -1,17 +1,19 @@
 import { addFaviconsAndManifest } from "./components/favicon.js";
 import { toggleMobileMenu } from "./ui/menu.js";
 import { registerHandler } from "./events/aut/registerHandler.js";
-import { fetchPosts } from "./api/posts/posts.js";
-import { login } from "./api/auth/login.js";
+import { fetchPosts } from "./api/posts/fetchPosts.js";
 import { loginHandler } from "./events/aut/loginHandler.js";
+import { createPostHandler } from "./ui/posts/createPostHandler.js";
 
 // Function to handle routing based on the current pathname
 function router() {
   const pathname = window.location.pathname;
 
+  console.log("Pathname:", pathname);
+
   switch (pathname) {
     case "/":
-      initializeLoginPage();
+    case "/index.html":
       console.log("Home page");
       loginHandler();
       break;
@@ -21,32 +23,13 @@ function router() {
     case "/register/index.html":
       registerHandler();
       break;
-    case "/feed/":
+    case "/feed/index.html":
       initializeFeedPage();
+      createPostHandler(); // Add this line
       break;
     default:
       console.log("Page not found");
       break;
-  }
-}
-
-// Function to initialize the login page
-function initializeLoginPage() {
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      try {
-        await login({ email, password });
-        window.location.href = "/profile/index.html";
-      } catch (error) {
-        console.error("Login failed:", error);
-        alert("Login failed: " + error.message);
-      }
-    });
   }
 }
 

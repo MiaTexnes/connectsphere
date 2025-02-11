@@ -24,9 +24,11 @@
           action="/profile"
           class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
         >
+          <div id="message"></div>
+          <!-- Container for error messages -->
           <div class="mb-4">
             <label for="email" class="block text-gray-700 font-bold mb-2"
-              >Username</label
+              >Email</label
             >
             <input
               type="text"
@@ -36,9 +38,6 @@
               minlength="3"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-            <p class="text-red-500 text-xs italic hidden" id="username-error">
-              Please enter a username
-            </p>
           </div>
           <div class="mb-6">
             <label for="password" class="block text-gray-700 font-bold mb-2"
@@ -63,13 +62,12 @@
             >
               Log in
             </button>
-            <button
-              type="button"
-              id="create-user-btn"
+            <a
+              href="register/index.html"
               class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none ml-4"
             >
               Create User
-            </button>
+            </a>
           </div>
         </form>
       </section>

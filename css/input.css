@@ -14,3 +14,19 @@
   color: green;
   border-bottom: 1px solid green;
 }
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.text-orange {
+  color: orange;
+}

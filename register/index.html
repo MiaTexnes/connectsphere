@@ -24,6 +24,7 @@
           action="/profile"
           class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
         >
+          <div id="message"></div>
           <div class="mb-4">
             <label for="username" class="block text-gray-700 font-bold mb-2"
               >Username</label
@@ -34,6 +35,7 @@
               id="username"
               required
               minlength="3"
+              maxlength="20"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
             <p class="text-red-500 text-xs italic hidden" id="username-error">
@@ -74,28 +76,6 @@
             />
             <p class="text-red-500 text-xs italic hidden" id="password-error">
               Please enter a password with at least 8 characters
-            </p>
-          </div>
-
-          <div class="mb-6">
-            <label
-              for="confirm-password"
-              class="block text-gray-700 font-bold mb-2"
-              >Confirm Password</label
-            >
-            <input
-              type="password"
-              name="confirm-password"
-              id="confirm-password"
-              required
-              minlength="8"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-            <p
-              class="text-red-500 text-xs italic hidden"
-              id="confirm-password-error"
-            >
-              Passwords do not match
             </p>
           </div>
 

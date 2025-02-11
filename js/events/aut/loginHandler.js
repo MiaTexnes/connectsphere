@@ -16,10 +16,11 @@ async function submitForm(event) {
 
   try {
     const result = await login(data);
+    // Store the entire user object including the token
     localStorage.setItem("user", JSON.stringify(result));
     window.location.href = "/profile/index.html";
   } catch (error) {
     console.error("Login failed:", error);
-    displayMessage("#loginForm", "danger", `Login failed: ${error.message}`);
+    displayMessage("#message", "error", `Login failed: ${error.message}`);
   }
 }

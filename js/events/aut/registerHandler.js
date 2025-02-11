@@ -1,7 +1,4 @@
-// Import necessary functions from other modules
 import { register } from "../../api/auth/register.js";
-import { setupEmailValidation } from "./emailValidation.js";
-import { setupPasswordValidation } from "./passwordValidation.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 
 // Function to handle the registration process
@@ -14,12 +11,6 @@ export function registerHandler() {
     // Add a submit event listener to the form
     form.addEventListener("submit", submitForm);
   }
-
-  // Set up email validation
-  setupEmailValidation();
-  // Set up password validation
-  setupPasswordValidation();
-  displayMessage();
 }
 
 // Function to handle form submission
@@ -51,11 +42,15 @@ async function submitForm(event) {
     // Make the API call to register the user
     const response = await register(data);
     console.log("User registered successfully:", response);
-    // Redirect to the profile page or show a success message
-    window.location.href = "/profile/index.html";
+
+    displayMessage(
+      "#message",
+      "success",
+      'You have successfully registered. Please <a href="/">login</a> to continue'
+    );
   } catch (error) {
     console.error("Error registering user:", error);
     // Show an error message to the user
-    alert("Registration failed: " + error.message);
+    displayMessage("#message", "error", `Login failed: ${error.message}`);
   }
 }
