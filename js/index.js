@@ -18,10 +18,10 @@ function router() {
       console.log("Home page");
       loginHandler();
       break;
-    case "/profile/index.html":
+    case "/profile/":
       initializeProfilePage();
       break;
-    case "/register/index.html":
+    case "/register/":
       registerHandler();
       break;
     case "/feed/":
