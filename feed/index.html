@@ -90,9 +90,7 @@
       <section class="w-full p-4 mb-8">
         <h1 class="text-2xl mb-4">Create a New Post</h1>
         <div id="message"></div>
-        <!-- Container for messages -->
         <form id="createPostForm" class="bg-white p-6 rounded shadow-md">
-          <div id="message"></div>
           <div class="mb-4">
             <label for="title" class="block text-gray-700 font-bold mb-2"
               >Title</label
@@ -119,7 +117,7 @@
           </div>
           <button
             type="submit"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none transform hover:-translate-y-1 transition duration-200"
           >
             Create Post
           </button>
@@ -128,6 +126,29 @@
 
       <section class="w-full p-4">
         <h2 class="text-2xl mb-4">Posts</h2>
+        <div class="flex justify-between mb-4">
+          <div class="flex items-center space-x-4">
+            <div class="flex">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search posts..."
+                class="p-2 border rounded-l"
+              />
+              <button
+                id="searchButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none"
+              >
+                Search
+              </button>
+            </div>
+            <select id="sortCriteria" class="p-2 border rounded">
+              <option value="newToOld">New to Old</option>
+              <option value="oldToNew">Old to New</option>
+              <option value="aToÅ">A to Å</option>
+            </select>
+          </div>
+        </div>
         <div id="posts-container" class="posts-container"></div>
       </section>
     </main>
@@ -138,5 +159,54 @@
         &copy; 2024 ConnectSphere. All rights reserved.
       </p>
     </footer>
+    <div
+      id="edit-post-modal"
+      class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4">
+        <h2 class="text-2xl font-bold mb-4">Edit Post</h2>
+        <form id="edit-post-form" class="space-y-4">
+          <div>
+            <label class="block text-gray-700 font-bold mb-2" for="edit-title">
+              Title
+            </label>
+            <input
+              type="text"
+              id="edit-title"
+              name="title"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-bold mb-2" for="edit-body">
+              Content
+            </label>
+            <textarea
+              id="edit-body"
+              name="body"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="flex justify-end space-x-2">
+            <button
+              type="button"
+              id="cancel-edit-btn"
+              class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

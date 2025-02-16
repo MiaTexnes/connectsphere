@@ -1,5 +1,6 @@
 import { login } from "../../api/auth/login.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
+import { setAuthToken } from "../../events/aut/auth.js";
 
 export function loginHandler() {
   const form = document.querySelector("#loginForm");
@@ -16,9 +17,8 @@ async function submitForm(event) {
 
   try {
     const result = await login(data);
-    // Store the entire user object including the token
-    localStorage.setItem("user", JSON.stringify(result));
-    window.location.href = "/profile/index.html";
+    setAuthToken(result); // Use the auth utility to store token
+    window.location.href = "/profile/index.html"; // Redirect to feed instead of profile
   } catch (error) {
     console.error("Login failed:", error);
     displayMessage("#message", "error", `Login failed: ${error.message}`);

@@ -26,6 +26,7 @@ function displayPosts(posts) {
     postElement.innerHTML = `
       <h2 class="text-xl font-bold mb-2">${post.title}</h2>
       <p class="text-gray-700">${post.body}</p>
+      <p class="text-gray-700">${post.created}</p>
     `;
     postsContainer.appendChild(postElement);
   });
