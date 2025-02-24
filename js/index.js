@@ -1,3 +1,5 @@
+
+
 import { addFaviconsAndManifest } from "./components/favicon.js";
 import { toggleMobileMenu } from "./ui/menu.js";
 import { registerHandler } from "./events/aut/registerHandler.js";
@@ -5,6 +7,8 @@ import { initializeFeedPage } from "./api/posts/fetchPosts.js";
 import { loginHandler } from "./events/aut/loginHandler.js";
 import { createPostHandler } from "./ui/posts/createPostHandler.js";
 import { setupSortHandler } from "./api/posts/sort.js";
+import { initializeProfilePage } from "./ui/profile/profile.js";
+import { setupEditPostHandlers } from "./api/posts/editPosts.js";
 
 // Function to handle routing based on the current pathname
 function router() {
@@ -19,15 +23,19 @@ function router() {
       loginHandler();
       break;
     case "/profile/":
+      case "/profile/index.html":
       initializeProfilePage();
       break;
     case "/register/":
+      case "/register/index.html":
       registerHandler();
       break;
     case "/feed/":
+    case "/feed/index.html":
       initializeFeedPage();
       createPostHandler();
       setupSortHandler();
+      setupEditPostHandlers();
       break;
     default:
       console.log("Page not found");
@@ -35,13 +43,6 @@ function router() {
   }
 }
 
-// Function to initialize the profile page
-function initializeProfilePage() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (user) {
-    document.getElementById("user-email").textContent = `Email: ${user.email}`;
-  }
-}
 
 // Initialize the application when the DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {

@@ -46,56 +46,57 @@ async function viewPost(postId) {
 }
 
 function displayPostDetails(post) {
+  const { title, body, created, updated, id } = post.data;
   const modal = document.createElement("div");
   modal.className =
     "fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-200";
   modal.innerHTML = `
     <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4 relative transform transition-all duration-200">
       <div class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
-        <p class="text-gray-700 leading-relaxed">${post.body}</p>
+        <h2 class="text-2xl font-bold text-gray-800">${title}</h2>
+        <p class="text-gray-700 leading-relaxed">${body}</p>
         <div class="text-sm text-gray-600 space-y-1">
           <p class="flex items-center">
             <span class="font-semibold mr-2">Created:</span>
-            ${new Date(post.created).toLocaleString()}
+            ${new Date(created).toLocaleString()}
           </p>
           <p class="flex items-center">
             <span class="font-semibold mr-2">Updated:</span>
-            ${new Date(post.updated).toLocaleString()}
+            ${new Date(updated).toLocaleString()}
           </p>
         </div>
-        <button
-          class="close-modal-btn mt-6 w-full md:w-auto px-6 py-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
-        >
-          Close
-        </button>
+        <div class="flex justify-end space-x-2">
+          <button
+            onclick="openEditModal({id: '${id}', title: '${title}', body: '${body}'})"
+            class="edit-modal-btn px-6 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+          >
+            Edit Post
+          </button>
+          <button
+            class="close-modal-btn px-6 py-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   `;
 
-  const closeBtn = modal.querySelector(".close-modal-btn");
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("opacity-0");
-    setTimeout(() => modal.remove(), 200);
-  });
+   const closeBtn = modal.querySelector(".close-modal-btn");
+   const editBtn = modal.querySelector(".edit-modal-btn");
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.add("opacity-0");
-      setTimeout(() => modal.remove(), 200);
-    }
-  });
+   closeBtn.addEventListener("click", () => {
+     modal.classList.add("opacity-0");
+     setTimeout(() => modal.remove(), 200);
+   });
 
-  // Add keyboard support for closing modal
-  document.addEventListener("keydown", function closeOnEscape(e) {
-    if (e.key === "Escape") {
-      modal.classList.add("opacity-0");
-      setTimeout(() => {
-        modal.remove();
-        document.removeEventListener("keydown", closeOnEscape);
-      }, 200);
-    }
-  });
+   editBtn.addEventListener("click", () => {
+     modal.classList.add("opacity-0");
+     setTimeout(() => {
+       modal.remove();
+       window.openEditModal({ id, title, body });
+     }, 200);
+   });
 
   document.body.appendChild(modal);
 }
@@ -140,19 +141,21 @@ export function displayPosts(posts) {
     postElement.className =
       "post bg-white p-4 rounded shadow-md mb-4 hover:shadow-lg transition-shadow duration-200";
     postElement.innerHTML = `
-      <h2 class="text-xl font-bold mb-2 text-gray-800">${post.title}</h2>
-      <p class="text-gray-700 mb-3">${post.body}</p>
-      <div class="text-sm text-gray-600 mb-3">
-        <p>Created: ${new Date(post.created).toLocaleString()}</p>
-        <p>Updated: ${new Date(post.updated).toLocaleString()}</p>
-      </div>
+    <h2 class="text-xl font-bold mb-2 text-gray-800">${post.title}</h2>
+    <p class="text-gray-700 mb-3">${post.body}</p>
+    <div class="text-sm text-gray-600 mb-3">
+      <p>Created: ${new Date(post.created).toLocaleString()}</p>
+      <p>Updated: ${new Date(post.updated).toLocaleString()}</p>
+    </div>
+    <div class="flex space-x-2">
       <button
         class="view-post-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
         data-post-id="${post.id}"
       >
         View Details
       </button>
-    `;
+    </div>
+  `;
 
     const viewButton = postElement.querySelector(".view-post-btn");
     viewButton.addEventListener("click", () => viewPost(post.id));

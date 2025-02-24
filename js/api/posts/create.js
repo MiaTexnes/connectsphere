@@ -3,7 +3,7 @@ import { BASE_URL } from "../../constants/api.js";
 export async function create(post) {
   // Get the access token from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
-  const token = user?.accessToken;
+  const token = user?.data?.accessToken;
 
   if (!token) {
     throw new Error("Not authenticated. Please login first.");
