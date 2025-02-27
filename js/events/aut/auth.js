@@ -20,6 +20,20 @@ export function getAuthToken() {
   return authData.accessToken;
 }
 
+function getUserName() {
+  const user = localStorage.getItem("user");
+  if (user) {
+    return user.data?.name || user.name;
+  }
+  return null;
+}
+
+export function isUsersPost(authorName){
+const loggedInUsername = getUserName();
+  return authorName === loggedInUsername;
+}
+
+
 export function logout() {
   localStorage.removeItem("user");
   window.location.href = "/index.html";

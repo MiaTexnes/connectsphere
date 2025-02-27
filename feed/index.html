@@ -115,6 +115,28 @@
               rows="4"
             ></textarea>
           </div>
+          <div class="mb-4">
+            <label for="imageUrl" class="block text-gray-700 font-bold mb-2"
+              >Image url</label
+            >
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="imageAlt" class="block text-gray-700 font-bold mb-2"
+              >Image alt</label
+            >
+            <input
+              type="text"
+              id="imageAlt"
+              name="imageAlt"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
           <button
             type="submit"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none transform hover:-translate-y-1 transition duration-200"
@@ -149,7 +171,7 @@
             </select>
           </div>
         </div>
-        <div id="posts-container" class="posts-container"></div>
+        <div id="posts-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </section>
     </main>
     <footer
