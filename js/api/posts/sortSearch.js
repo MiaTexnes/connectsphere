@@ -1,4 +1,4 @@
-import { initializeFeedPage } from "./fetchPosts.js";
+import { initializeFeedPage } from "../../ui/posts/postsDisplay.js";
 
 // Function to sort posts
 export function sortPosts(posts, criteria) {
@@ -16,20 +16,26 @@ export function sortPosts(posts, criteria) {
   }
 }
 
-// Function to search posts in sort.js
+// Enhanced search function to include author name
 export function searchPosts(posts, searchTerm) {
   if (!searchTerm) return posts;
 
   searchTerm = searchTerm.toLowerCase();
   return posts.filter((post) => {
-    // Add null checks for title and body
+    // Add null checks for title, body, and author
     const title = post.title?.toLowerCase() || "";
     const body = post.body?.toLowerCase() || "";
+    const authorName = post.author?.name?.toLowerCase() || "";
 
-    return title.includes(searchTerm) || body.includes(searchTerm);
+    return (
+      title.includes(searchTerm) ||
+      body.includes(searchTerm) ||
+      authorName.includes(searchTerm)
+    );
   });
 }
 
+// Set up real-time search and sorting
 export function setupSortHandler() {
   const sortSelect = document.getElementById("sortCriteria");
   const searchInput = document.getElementById("searchInput");
@@ -43,7 +49,31 @@ export function setupSortHandler() {
     });
   }
 
-  // Add search button click handler
+  // Add input event for live/dynamic search
+  if (searchInput) {
+    // Debounce function to avoid too many requests
+    function debounce(func, timeout = 300) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          func.apply(this, args);
+        }, timeout);
+      };
+    }
+
+    // Create a debounced version of the search
+    const debouncedSearch = debounce(() => {
+      const searchTerm = searchInput.value;
+      const sortCriteria = sortSelect.value;
+      initializeFeedPage(sortCriteria, searchTerm);
+    }, 300);
+
+    // Add input event for realtime search results
+    searchInput.addEventListener("input", debouncedSearch);
+  }
+
+  // Keep the button click handler
   if (searchButton) {
     searchButton.addEventListener("click", () => {
       const searchTerm = searchInput.value;

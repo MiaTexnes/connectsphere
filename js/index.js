@@ -1,12 +1,11 @@
 import { addFaviconsAndManifest } from "./components/favicon.js";
 import { toggleMobileMenu } from "./ui/menu.js";
 import { registerHandler } from "./events/aut/registerHandler.js";
-import { initializeFeedPage } from "./api/posts/fetchPosts.js";
+import { initializeFeedPage } from "./ui/posts/postsDisplay.js";
 import { loginHandler } from "./events/aut/loginHandler.js";
 import { createPostHandler } from "./ui/posts/createPostHandler.js";
-import { setupSortHandler } from "./api/posts/sort.js";
+import { setupSortHandler } from "./api/posts/sortSearch.js";
 import { initializeProfilePage } from "./ui/profile/profile.js";
-// import { setupEditPostHandlers } from "./api/posts/editPosts.js";
 import { editPostHandler } from "./events/posts/editPostHandler.js";
 
 // Function to handle routing based on the current pathname
@@ -34,8 +33,6 @@ function router() {
       initializeFeedPage();
       createPostHandler();
       setupSortHandler();
-
-      // setupEditPostHandlers();
       break;
     case "/feed/edit.html":
       editPostHandler();

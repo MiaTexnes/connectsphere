@@ -1,5 +1,5 @@
 import { deletePost } from "../../api/posts/deletePost.js";
-import { initializeFeedPage } from "../../api/posts/fetchPosts.js";
+import { initializeFeedPage } from "../../ui/posts/postsDisplay.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 
 export function deletePostHandler() {
