@@ -48,7 +48,11 @@ async function viewPost(postId) {
 }
 
 function displayPostDetails(post) {
-  const { title, body, created, updated, id, author } = post.data, imageUrl = post.data.media?.url || "/assets/images/noImage.jpg", imageAlt = post.data.media?.alt || title;
+  const { title, body, created, updated, id, author } = post.data,
+    imageUrl = post.data.media?.url || "/assets/images/noImage.jpg",
+    imageAlt = post.data.media?.alt || title;
+
+  const { name: authorName } = author;
 
   const enableAdminButtons = isUsersPost(author.name);
 
@@ -65,17 +69,25 @@ function displayPostDetails(post) {
 
   const modal = document.createElement("div");
   modal.className =
-    "fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-200";
+    "fixed inset-0 overflow-hidden bg-gray-600 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-200";
   modal.innerHTML = `
-    <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4 relative transform transition-all duration-200">
-      <div class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-800">${title}</h2>
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-2 relative transform transition-all duration-200">
+        <div class="mb-2 flex flex-col items-center">
+    <img
+      src="${author?.avatar.url || "../assets/images/2.png"}"
+      alt="${author?.name || "Unknown"}'s avatar"
+      class="w-16 h-16 rounded-full mr-4"
+    />
+    <div class="flex-1">
+          <h2 class="text-xl font-bold mb-1 text-gray-800 truncate whitespace-nowrap overflow-hidden">${title}</h2>
+          <p class="text-sm text-gray-600">By ${authorName}</p>
+        </div>
         <div class="flex-1 overflow-hidden">
     <div class="h-[300px] mb-3">
           <img
             src="${imageUrl}"
             alt="${imageAlt}"
-            class="w-full h-full object-cover bg-gray-100"
+            class="w-full h-full object-fit bg-gray-100"
             onerror="this.src='/assets/images/noImage.jpg'"
           >
         </div>
@@ -190,7 +202,7 @@ export function displayPosts(posts) {
           <img
             src="${imageUrl}"
             alt="${imageAlt}"
-            class="w-full h-full object-cover rounded bg-gray-100"
+            class="w-full h-full object-fit rounded bg-gray-100"
             onerror="this.src='/assets/images/noImage.jpg'"
           >
         </div>
