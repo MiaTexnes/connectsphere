@@ -171,7 +171,9 @@
             </select>
           </div>
         </div>
-        <div id="posts-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <div id="posts-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <!-- Posts will be appended here -->
+</div>
       </section>
     </main>
     <footer
@@ -182,9 +184,9 @@
       </p>
     </footer>
     <div
-  id="edit-post-modal"
-  class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden justify-center items-center z-50"
->
+      id="edit-post-modal"
+      class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden justify-center items-center z-50"
+    >
       <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4">
         <h2 class="text-2xl font-bold mb-4">Edit Post</h2>
         <form id="edit-post-form" class="space-y-4">

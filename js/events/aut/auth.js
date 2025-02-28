@@ -9,30 +9,26 @@ export function setAuthToken(userData) {
 
 export function getAuthToken() {
   const authData = JSON.parse(localStorage.getItem("user"));
-  if (!authData) return null;
 
-  // Check if token has expired
-  if (new Date().getTime() > authData.expiryTime) {
-    logout();
-    return null;
-  }
-
-  return authData.accessToken;
+  return authData?.data?.accessToken;
 }
 
-function getUserName() {
+function getUsername() {
   const user = localStorage.getItem("user");
   if (user) {
-    return user.data?.name || user.name;
+    const userObject = JSON.parse(user);
+    return userObject.data?.name;
   }
   return null;
 }
 
-export function isUsersPost(authorName){
-const loggedInUsername = getUserName();
+export function isUsersPost(authorName) {
+  console.log("Author name:", authorName);
+
+  const loggedInUsername = getUsername();
+  console.log("loggedInUsername", loggedInUsername);
   return authorName === loggedInUsername;
 }
-
 
 export function logout() {
   localStorage.removeItem("user");

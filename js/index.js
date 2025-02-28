@@ -1,5 +1,3 @@
-
-
 import { addFaviconsAndManifest } from "./components/favicon.js";
 import { toggleMobileMenu } from "./ui/menu.js";
 import { registerHandler } from "./events/aut/registerHandler.js";
@@ -8,7 +6,8 @@ import { loginHandler } from "./events/aut/loginHandler.js";
 import { createPostHandler } from "./ui/posts/createPostHandler.js";
 import { setupSortHandler } from "./api/posts/sort.js";
 import { initializeProfilePage } from "./ui/profile/profile.js";
-import { setupEditPostHandlers } from "./api/posts/editPosts.js";
+// import { setupEditPostHandlers } from "./api/posts/editPosts.js";
+import { editPostHandler } from "./events/posts/editPostHandler.js";
 
 // Function to handle routing based on the current pathname
 function router() {
@@ -23,11 +22,11 @@ function router() {
       loginHandler();
       break;
     case "/profile/":
-      case "/profile/index.html":
+    case "/profile/index.html":
       initializeProfilePage();
       break;
     case "/register/":
-      case "/register/index.html":
+    case "/register/index.html":
       registerHandler();
       break;
     case "/feed/":
@@ -35,14 +34,17 @@ function router() {
       initializeFeedPage();
       createPostHandler();
       setupSortHandler();
-      setupEditPostHandlers();
+
+      // setupEditPostHandlers();
+      break;
+    case "/feed/edit.html":
+      editPostHandler();
       break;
     default:
       console.log("Page not found");
       break;
   }
 }
-
 
 // Initialize the application when the DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {

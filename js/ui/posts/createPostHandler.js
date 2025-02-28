@@ -16,45 +16,34 @@ async function submitForm(event) {
   const form = event.target;
   const formData = new FormData(form);
 
-  const imageUrl = formData.get("imageUrl").trim();
-  const imageAlt = formData.get("imageAlt").trim();
+  const title = formData.get("title");
+  const body = formData.get("content");
 
   const post = {
-    title: formData.get("title"),
-    body: formData.get("content"),
+    title,
+    body,
   };
 
-  // Check if URL is provided and is valid
-  if (imageUrl) {
-    // Check if URL ends with common image/gif extensions
-    const validExtensions = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
-    const isValidImageUrl = validExtensions.some(
-      (ext) =>
-        imageUrl.toLowerCase().endsWith(ext) ||
-        imageUrl.toLowerCase().includes("giphy.com") ||
-        imageUrl.toLowerCase().includes("tenor.com")
-    );
+  const imageUrl = formData.get("imageUrl");
+  let imageAlt = formData.get("imageAlt");
 
-    if (isValidImageUrl) {
-      post.media = {
-        url: imageUrl,
-        alt: imageAlt || post.title, // Use title as fallback if no alt text
-      };
-    } else {
-      displayMessage(
-        "#message",
-        "warning",
-        "Please provide a valid image/GIF URL"
-      );
-      return;
+  if (imageUrl.trim() !== "") {
+    if (imageAlt.trim() === "") {
+      imageAlt = title;
     }
+
+    post.media = {
+      url: imageUrl,
+      alt: imageAlt,
+    };
   }
 
   try {
     await create(post);
     displayMessage("#message", "success", "Post created successfully!");
     form.reset();
-    await initializeFeedPage(); // Refresh the posts list
+    // Refresh the posts list after creating a new post
+    await initializeFeedPage();
   } catch (error) {
     console.error("Creating post failed:", error);
     displayMessage(

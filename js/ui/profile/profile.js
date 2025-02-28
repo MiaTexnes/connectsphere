@@ -1,6 +1,4 @@
-
-export function initializeProfilePage()
-{
+export function initializeProfilePage() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (user) {
