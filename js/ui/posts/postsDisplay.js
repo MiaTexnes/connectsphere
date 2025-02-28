@@ -2,16 +2,24 @@ import { fetchPosts } from "../../api/posts/postsApi.js";
 import { sortPosts, searchPosts } from "../../api/posts/sortSearch.js";
 import { viewPostDetails } from "./postDetailModal.js";
 
+// Store all posts and current page in module-level variables
+let allPosts = [];
+let currentPage = 0;
+const postsPerPage = 12;
+
 export async function initializeFeedPage(
   sortCriteria = "newToOld",
   searchTerm = ""
 ) {
   try {
+    // Reset pagination when initializing feed
+    currentPage = 0;
+
     const posts = await fetchPosts();
     if (posts && posts.data) {
       let filteredPosts = searchPosts(posts.data, searchTerm);
-      const sortedPosts = sortPosts(filteredPosts, sortCriteria);
-      displayPosts({ data: sortedPosts });
+      allPosts = sortPosts(filteredPosts, sortCriteria);
+      displayPosts({ data: allPosts }, true); // true to reset pagination
     }
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -19,9 +27,18 @@ export async function initializeFeedPage(
   }
 }
 
-export function displayPosts(posts) {
+export function displayPosts(posts, reset = false) {
   const postsContainer = document.getElementById("posts-container");
-  postsContainer.innerHTML = "";
+
+  // Clear posts container if resetting pagination
+  if (reset) {
+    postsContainer.innerHTML = "";
+    // Remove any existing load more button
+    const existingButton = document.getElementById("load-more-btn");
+    if (existingButton) {
+      existingButton.remove();
+    }
+  }
 
   if (!posts || !Array.isArray(posts.data)) {
     console.error("Invalid posts data:", posts);
@@ -38,11 +55,16 @@ export function displayPosts(posts) {
   }
 
   // Make container wider on larger screens while maintaining 3 columns
-  // Add px-4 on smaller screens and px-0 on larger screens for proper spacing
   postsContainer.className =
     "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto max-w-7xl overflow-x-hidden px-4 lg:px-0";
 
-  posts.data.forEach((post) => {
+  // Get the subset of posts for the current page
+  const startIndex = currentPage * postsPerPage;
+  const endIndex = Math.min(startIndex + postsPerPage, posts.data.length);
+  const currentPagePosts = posts.data.slice(startIndex, endIndex);
+
+  // Display the posts for the current page
+  currentPagePosts.forEach((post) => {
     const { title, body, created, updated, author, media, id } = post;
     const { name: authorName } = author;
 
@@ -54,7 +76,6 @@ export function displayPosts(posts) {
       imageAlt = media.alt;
     }
 
-    // Updated to make individual posts slightly wider
     const postElement = document.createElement("div");
     postElement.className =
       "post bg-white p-4 rounded shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col h-[600px] w-full";
@@ -107,4 +128,37 @@ export function displayPosts(posts) {
 
     postsContainer.appendChild(postElement);
   });
+
+  // Add Load More button if there are more posts to load
+  if (endIndex < posts.data.length) {
+    // Remove existing load more button if it exists
+    const existingButton = document.getElementById("load-more-btn");
+    if (existingButton) {
+      existingButton.remove();
+    }
+
+    // Create a container for the button to span all columns
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className =
+      "col-span-1 md:col-span-2 lg:col-span-3 flex justify-center mt-6 mb-8";
+
+    const loadMoreButton = document.createElement("button");
+    loadMoreButton.id = "load-more-btn";
+    loadMoreButton.className =
+      "bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 mx-auto";
+    loadMoreButton.textContent = `Load More Posts (${
+      posts.data.length - endIndex
+    } remaining)`;
+
+    loadMoreButton.addEventListener("click", () => {
+      currentPage++;
+      displayPosts(posts); // No reset, append more posts
+    });
+
+    buttonContainer.appendChild(loadMoreButton);
+
+    // Add the button container after the grid
+    const postsSection = postsContainer.parentNode;
+    postsSection.appendChild(buttonContainer);
+  }
 }
