@@ -102,5 +102,5 @@ function displayPostDetails(post) {
   });
 
   document.body.appendChild(modal);
-  deletePostHandler();
+  deletePostHandler(modal);
 }

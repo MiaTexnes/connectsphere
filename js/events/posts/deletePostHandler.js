@@ -2,7 +2,7 @@ import { deletePost } from "../../api/posts/deletePost.js";
 import { initializeFeedPage } from "../../ui/posts/postsDisplay.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 
-export function deletePostHandler() {
+export function deletePostHandler(modal) {
   const deleteBtns = document.querySelectorAll(".delete-post-btn");
   console.log("Delete buttons", deleteBtns);
 
@@ -17,6 +17,7 @@ export function deletePostHandler() {
         try {
           await deletePost(postId);
           await initializeFeedPage();
+        modal.remove();
         } catch (error) {
           displayMessage(
             "#message",
