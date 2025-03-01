@@ -1,6 +1,21 @@
 import { BASE_URL } from "../../constants/api.js";
 import { getAuthToken } from "../../events/aut/auth.js";
 
+/**
+ * Deletes a post with the specified ID
+ *
+ * @async
+ * @param {string} id - The ID of the post to delete
+ * @throws {Error} If the user is not authenticated or if the deletion fails
+ * @returns {Promise<void>} A promise that resolves when the post is successfully deleted
+ * @example
+ * try {
+ *   await deletePost('123');
+ *   console.log('Post deleted successfully');
+ * } catch (error) {
+ *   console.error('Failed to delete post:', error.message);
+ * }
+ */
 export async function deletePost(id) {
   const token = getAuthToken();
   if (!token) {
