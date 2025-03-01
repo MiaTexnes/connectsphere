@@ -1,5 +1,7 @@
 import { register } from "../../api/auth/register.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
+import { login } from "../../api/auth/login.js";
+import { setAuthToken } from "../../events/aut/auth.js";
 
 // Function to handle the registration process
 export function registerHandler() {
@@ -43,14 +45,32 @@ async function submitForm(event) {
     const response = await register(data);
     console.log("User registered successfully:", response);
 
-    displayMessage(
-      "#message",
-      "success",
-      'You have successfully registered. Please <a href="/">login</a> to continue'
-    );
+    // Auto-login after successful registration
+    try {
+      const loginData = {
+        email: data.email,
+        password: data.password,
+      };
+      const loginResult = await login(loginData);
+      setAuthToken(loginResult);
+
+      // Redirect to profile page
+      window.location.href = "/profile/index.html";
+    } catch (loginError) {
+      console.error("Auto-login failed:", loginError);
+      displayMessage(
+        "#message",
+        "success",
+        'Registration successful! Please <a href="/index.html">login</a> to continue.'
+      );
+    }
   } catch (error) {
     console.error("Error registering user:", error);
     // Show an error message to the user
-    displayMessage("#message", "error", `Login failed: ${error.message}`);
+    displayMessage(
+      "#message",
+      "error",
+      `Registration failed: ${error.message}`
+    );
   }
 }
