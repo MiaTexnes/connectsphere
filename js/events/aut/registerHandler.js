@@ -17,33 +17,24 @@ export function registerHandler() {
 
 // Function to handle form submission
 async function submitForm(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-  const form = event.target; // Get the form element that triggered the event
-  const formData = new FormData(form); // Create a FormData object from the form
-  const data = Object.fromEntries(formData); // Convert the FormData object to a plain JavaScript object
+  event.preventDefault();
+  const form = event.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData);
 
-  // Remove the bio field if it is empty
-  if (data.bio && data.bio.trim() === "") {
-    delete data.bio;
-  }
-
-  // Remove the avatarUrl field if it is empty, otherwise create an avatar object
-  if (data.avatarUrl && data.avatarUrl.trim() === "") {
-    delete data.avatarUrl;
-  } else if (data.avatarUrl) {
-    data.avatar = {
-      url: data.avatarUrl,
-      alt: `${data.name}'s avatar`,
-    };
-    delete data.avatarUrl;
-  }
-
-  console.log(data); // Log the form data for debugging
+  console.log(data);
 
   try {
     // Make the API call to register the user
     const response = await register(data);
     console.log("User registered successfully:", response);
+
+    // Show success message immediately
+    displayMessage(
+      "#message",
+      "success",
+      "Registration successful! Redirecting to profile page..."
+    );
 
     // Auto-login after successful registration
     try {
@@ -54,8 +45,10 @@ async function submitForm(event) {
       const loginResult = await login(loginData);
       setAuthToken(loginResult);
 
-      // Redirect to profile page
-      window.location.href = "/profile/index.html";
+      // Delay redirect by 2 seconds to show the message
+      setTimeout(() => {
+        window.location.href = "/profile/index.html";
+      }, 2000);
     } catch (loginError) {
       console.error("Auto-login failed:", loginError);
       displayMessage(

@@ -9,6 +9,7 @@ import { initializeProfilePage } from "./ui/profile/profile.js";
 import { editPostHandler } from "./events/posts/editPostHandler.js";
 import { setupLogoutHandlers } from "./events/aut/logout.js";
 
+
 // Function to handle routing based on the current pathname
 function router() {
   const pathname = window.location.pathname;

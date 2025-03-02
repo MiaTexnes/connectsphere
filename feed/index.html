@@ -33,13 +33,13 @@
             >Profile</a
           >
         </div>
-        <!-- In desktop navigation -->
-<div class="hidden md:flex items-center space-x-3">
-  <a href="#"
-     class="logout-link py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300">
-    Sign Out
-  </a>
-</div>
+        <div class="hidden md:flex items-center space-x-3">
+          <a
+            href="../index.html"
+            class="py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Sign Out</a
+          >
+        </div>
         <div class="md:hidden">
           <button id="menu-btn" class="text-black focus:outline-none">
             <svg
@@ -60,14 +60,14 @@
         </div>
       </nav>
       <div id="mobile-menu" class="hidden md:hidden">
-        <!-- In mobile menu -->
-<ul class="flex flex-col items-center space-y-4 p-4">
-  <li>
-    <a href="#"
-       class="logout-link block py-2 px-4 text-black hover:text-green-500">
-      Log Out
-    </a>
-  </li>
+        <ul class="flex flex-col items-center space-y-4 p-4">
+          <li>
+            <a
+              href="../index.html"
+              class="block py-2 px-4 text-black hover:text-green-500"
+              >Log Out</a
+            >
+          </li>
           <li>
             <a
               href="../feed/index.html"
@@ -157,18 +157,8 @@
                 placeholder="Search posts..."
                 class="p-2 border rounded-l"
               />
-              <button
-                id="searchButton"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none"
-              >
-                Search
-              </button>
             </div>
-            <select id="sortCriteria" class="p-2 border rounded">
-              <option value="newToOld">New to Old</option>
-              <option value="oldToNew">Old to New</option>
-              <option value="aToÅ">A to Å</option>
-            </select>
+            <input id="filterByAuthor" placeholder="Filter by author name" />
           </div>
         </div>
         <div
@@ -237,3 +227,4 @@
     </div>
   </body>
 </html>
+
