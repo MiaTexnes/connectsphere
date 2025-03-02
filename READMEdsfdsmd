@@ -94,12 +94,14 @@ connectsphere/
 - Secure password handling (minimum 8 characters)
 
 ### Feed Page
-- Real-time post updates
 - Interactive post creation with media support
-- Filtering options
+- Filter options
 
 ### Profile Page
 - User information
+
+
+fjskfljsdklfsfds
 
 ## 🚀 Development Process
 
@@ -122,14 +124,6 @@ connectsphere/
    - Cross-browser compatibility testing
    - Performance optimization
    - Deployed via Netlify
-
-## 🔮 Future Enhancements
-
-- [ ] Real-time notifications system
-- [ ] Direct messaging functionality
-- [ ] Advanced media handling (videos, galleries)
-- [ ] Community groups and events
-- [ ] Dark mode support
 
 ## 🤝 Contributing
 
