@@ -96,17 +96,15 @@ connectsphere/
 ### Feed Page
 - Real-time post updates
 - Interactive post creation with media support
-- Filtering and sorting options
+- Filtering options
 
 ### Profile Page
-- Comprehensive user information
-- Follow/unfollow functionality
-- Post history with engagement metrics
+- User information
 
 ## 🚀 Development Process
 
 1. **Planning & Design**
-   - Created wireframes and user flows
+   - Created wireframe
    - Defined technical requirements
 
 2. **Implementation**
@@ -145,7 +143,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is created for educational purposes as part of the JavaScript 2 course.
 
 ## 🔗 Connect With Me
 
