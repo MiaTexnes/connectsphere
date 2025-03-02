@@ -100,9 +100,6 @@ connectsphere/
 ### Profile Page
 - User information
 
-
-fjskfljsdklfsfds
-
 ## 🚀 Development Process
 
 1. **Planning & Design**
