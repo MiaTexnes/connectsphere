@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Essential meta tags for character encoding and responsive viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile | ConnectSphere</title>
+    <!-- External resources and dependencies -->
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/index.js" type="module"></script>
   </head>
+  <!-- Body with flexbox layout and responsive design -->
   <body class="flex flex-col items-center min-h-screen bg-gray-100">
+    <!-- Header with gradient background and responsive navigation -->
     <header
       class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full"
     >
+      <!-- Main navigation container -->
       <nav class="container mx-auto flex justify-between items-center p-4">
+        <!-- Brand logo and site title -->
         <a
-          href="/"
+          href="/profile/"
           class="flex items-center text-3xl font-bold italic text-black"
         >
           <img class="w-10 h-10 mr-2" src="../assets/images/2.png" alt="Logo" />
           ConnectSphere
         </a>
+        <!-- Desktop navigation links - hidden on mobile -->
         <div class="hidden md:flex items-center space-x-1">
-          <a href="../feed/index.html" class="py-2 px-4 text-black hover:text-green-500"
+          <a
+            href="../feed/index.html"
+            class="py-2 px-4 text-black hover:text-green-500"
             >Feed</a
           >
           <a
@@ -29,13 +38,16 @@
             >Profile</a
           >
         </div>
-        <!-- In desktop navigation -->
-<div class="hidden md:flex items-center space-x-3">
-  <a href="#"
-     class="logout-link py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300">
-    Sign Out
-  </a>
-</div>
+        <!-- Sign out button - visible only on desktop -->
+        <div class="hidden md:flex items-center space-x-3">
+          <a
+            href="#"
+            class="logout-link py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300"
+          >
+            Sign Out
+          </a>
+        </div>
+        <!-- Mobile menu hamburger button -->
         <div class="md:hidden">
           <button id="menu-btn" class="text-black focus:outline-none">
             <svg
@@ -55,17 +67,20 @@
           </button>
         </div>
       </nav>
+      <!-- Mobile menu - hidden by default, toggles with hamburger button -->
       <div id="mobile-menu" class="hidden md:hidden">
-        <!-- In mobile menu -->
-<ul class="flex flex-col items-center space-y-4 p-4">
-  <li>
-    <a href="#"
-       class="logout-link block py-2 px-4 text-black hover:text-green-500">
-      Log Out
-    </a>
-  </li>
+        <ul class="flex flex-col items-center space-y-4 p-4">
           <li>
-            <a href="../feed/index.html" class="block py-2 px-4 text-gray-500 hover:text-black"
+            <a
+              href="#"
+              class="logout-link block py-2 px-4 text-black hover:text-green-500"
+              >Log Out</a
+            >
+          </li>
+          <li>
+            <a
+              href="../feed/index.html"
+              class="block py-2 px-4 text-gray-500 hover:text-black"
               >Feed</a
             >
           </li>
@@ -80,16 +95,23 @@
       </div>
     </header>
 
+    <!-- Main content area with max width and top margin -->
     <main class="w-full p-4 mt-16 container max-w-4xl">
+      <!-- Profile information card -->
       <section class="bg-white p-6 rounded-lg shadow-md">
+        <!-- Profile header with photo and details - stacks on mobile, side by side on desktop -->
         <div class="flex flex-col md:flex-row items-center justify-between">
+          <!-- Profile photo with responsive sizing -->
           <img
             src="../assets/images/mary.jpeg"
             alt="Profile Picture"
             class="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-4"
           />
+          <!-- User details container -->
           <div>
-            <h1 id="profile-name" class="text-2xl font-bold profile-name"></h1> <!-- User's name will be inserted here -->
+            <!-- Dynamic user name - populated by JavaScript -->
+            <h1 id="profile-name" class="text-2xl font-bold profile-name"></h1>
+            <!-- User details with consistent styling -->
             <p class="text-gray-600">Age: 34</p>
             <p class="user-email text-gray-600 mb-4" id="user-email"></p>
             <p class="text-gray-600">Mother of two wonderful kids</p>
@@ -97,28 +119,10 @@
             <p class="text-gray-600">Hobbies: Hiking, Reading, Cooking</p>
             <p class="text-gray-600">Location: San Francisco, CA</p>
           </div>
-          <div class="bg-white p-6 mt-6">
-            <h2 class="text-xl font-bold mb-4">Followers</h2>
-            <p class="text-gray-600 mb-4">235 Followers</p>
-            <h2 class="text-xl font-bold mb-4">Following</h2>
-            <p class="text-gray-600 mb-4">194 Following</p>
-          </div>
-        </div>
-        <div class="flex justify-center mt-6 space-x-4">
-          <button
-            type="button"
-            class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
-          >
-            Follow
-          </button>
-          <button
-            type="button"
-            class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
-          >
-            Unfollow
-          </button>
         </div>
       </section>
+
+      <!-- About Me section -->
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
         <h3 class="text-xl font-bold mb-4">About Me</h3>
         <p class="text-gray-600">
@@ -131,6 +135,8 @@
           individuals and share knowledge and experiences.
         </p>
       </section>
+
+      <!-- Skills section with bullet points -->
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
         <h3 class="text-xl font-bold mb-4">Skills</h3>
         <ul class="list-disc list-inside text-gray-600">
@@ -143,9 +149,12 @@
         </ul>
       </section>
 
+      <!-- User posts section -->
       <section class="bg-white p-6 rounded-lg shadow-md mt-6">
         <h3 class="text-xl font-bold mb-4">Posts</h3>
+        <!-- Posts container with vertical spacing -->
         <div class="space-y-4">
+          <!-- Individual post cards -->
           <div class="p-4 bg-gray-100 rounded-lg shadow">
             <h4 class="text-lg font-bold">Exploring the Mountains</h4>
             <p class="text-gray-600">
@@ -167,10 +176,11 @@
               latest trends in technology.
             </p>
           </div>
-          <!-- Add more posts as needed -->
         </div>
       </section>
     </main>
+
+    <!-- Footer with gradient background and copyright -->
     <footer
       class="w-full text-center p-2 bg-gray-200 mt-auto bg-gradient-to-r from-green-100 to-blue-100 shadow-lg"
     >

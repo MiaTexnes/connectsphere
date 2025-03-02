@@ -1,12 +1,20 @@
+/**
+ * @module registerHandler
+ * @description Handles user registration workflow including form submission and authentication
+ */
+
 import { register } from "../../api/auth/register.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import { login } from "../../api/auth/login.js";
 import { setAuthToken } from "../../events/aut/auth.js";
 
-// Function to handle the registration process
+/**
+ * Sets up the registration form handler
+ * @function registerHandler
+ * @description Attaches submit event listener to the registration form
+ * @returns {void}
+ */
 export function registerHandler() {
-  console.log("registerHandler");
-
   // Get the registration form element by its ID
   const form = document.querySelector("#registerForm");
   if (form) {
@@ -15,14 +23,19 @@ export function registerHandler() {
   }
 }
 
-// Function to handle form submission
+/**
+ * Handles the registration form submission
+ * @function submitForm
+ * @async
+ * @param {Event} event - The form submission event
+ * @description Processes form data, registers user, and attempts auto-login
+ * @returns {Promise<void>}
+ */
 async function submitForm(event) {
   event.preventDefault();
   const form = event.target;
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
-
-  console.log(data);
 
   try {
     // Make the API call to register the user

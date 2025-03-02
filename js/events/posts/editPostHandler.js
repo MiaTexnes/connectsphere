@@ -1,17 +1,23 @@
+// Import required functions for fetching post data and populating form
 import { fetchPostById } from "../../api/posts/fetchPosts.js";
 import { populateEditForm } from "./populateEditForm.js";
 
+/**
+ * Handles setting up the edit post form with existing post data
+ * Fetches post data from API and pre-fills form fields
+ * @async
+ * @returns {Promise<void>}
+ */
 export async function editPostHandler() {
-  // get id from query params
+  // Extract post ID from URL query parameters
   const params = new URLSearchParams(window.location.search);
   const postId = params.get("id");
 
-  // get the post by id
+  // Retrieve post data from API using the extracted ID
   const post = await fetchPostById(postId);
-  console.log(post);
 
+  // Fill the edit form with the post's existing content
   populateEditForm(post.data);
 
-  // populate the form with the post data
-  // add a submit event listener to the form
+  // Note: Form submission is handled separately
 }

@@ -1,28 +1,34 @@
+/**
+ * Adds favicon and manifest links to document head
+ * Handles different favicon sizes and manifest file for web app support
+ */
 export function addFaviconsAndManifest() {
   const head = document.head;
 
+  // Define favicon and manifest configurations
   const links = [
     {
       rel: "apple-touch-icon",
       sizes: "180x180",
-      href: "/assets/favicon/apple-touch-icon.png", // Updated path
+      href: "/assets/favicon/apple-touch-icon.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "32x32",
-      href: "/assets/favicon/favicon-32x32.png", // Updated path
+      href: "/assets/favicon/favicon-32x32.png",
     },
     {
       rel: "icon",
       type: "image/png",
       sizes: "16x16",
-      href: "/assets/favicon/favicon-16x16.png", // Updated path
+      href: "/assets/favicon/favicon-16x16.png",
     },
-    { rel: "manifest", href: "/assets/favicon/site.webmanifest" }, // Updated path
+    { rel: "manifest", href: "/assets/favicon/site.webmanifest" },
   ];
 
   try {
+    // Create and append link elements for each favicon
     links.forEach((linkInfo) => {
       const link = document.createElement("link");
       Object.keys(linkInfo).forEach((attr) =>
@@ -30,7 +36,7 @@ export function addFaviconsAndManifest() {
       );
       head.appendChild(link);
 
-      // Verify if file exists
+      // Validate favicon file existence
       fetch(linkInfo.href)
         .then((response) => {
           if (!response.ok) {
@@ -46,7 +52,7 @@ export function addFaviconsAndManifest() {
   }
 }
 
-// Add DOMContentLoaded event listener
+// Initialize favicons when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   addFaviconsAndManifest();
 });

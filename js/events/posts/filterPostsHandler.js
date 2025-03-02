@@ -1,3 +1,4 @@
+// Import the display function for rendering filtered posts
 import { displayPosts } from "../../ui/posts/postsDisplay.js";
 
 /**
@@ -18,20 +19,27 @@ import { displayPosts } from "../../ui/posts/postsDisplay.js";
  * to the displayPosts function.
  */
 export default function filterPostsHandler(posts) {
+  // Get the filter input element from DOM
   const filterInput = document.getElementById("filterByAuthor");
 
+  // Add input event listener to process filtering as user types
   filterInput.addEventListener("input", function (event) {
+    // Get lowercase filter term from input value for case-insensitive comparison
     const filterTerm = event.target.value.toLowerCase();
 
+    // Filter posts to only those whose author names include the filter term
     const filterPosts = posts.filter((post) => {
       const authorName = post.author.name.toLowerCase();
       return authorName.includes(filterTerm);
     });
 
+    // Format the filtered posts to match expected data structure
     const postsData = {
       data: filterPosts,
     };
 
+    // Re-render the posts display with filtered results
+    // The second parameter (true) ensures the display is refreshed
     displayPosts(postsData, true);
   });
 }

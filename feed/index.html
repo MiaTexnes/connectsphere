@@ -1,96 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Essential meta tags for character encoding and responsive viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed | ConnectSphere</title>
+    <!-- External resources and dependencies -->
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/index.js" type="module"></script>
   </head>
+  <!-- Body with flexbox layout for sticky footer and overflow control -->
   <body
     class="flex flex-col items-center min-h-screen bg-gray-100 overflow-x-hidden"
   >
-    <header
-      class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full overflow-x-hidden"
+    <!-- Header with navigation and responsive menu -->
+<header class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full overflow-x-hidden">
+  <!-- Main navigation container -->
+  <nav class="container mx-auto flex justify-between items-center p-4">
+    <!-- Brand logo and site title -->
+    <a
+      href="/profile/"
+      class="flex items-center text-3xl font-bold italic text-black"
     >
-      <nav class="container mx-auto flex justify-between items-center p-4">
-        <a
-          href="/"
-          class="flex items-center text-3xl font-bold italic text-black"
+      <img class="w-10 h-10 mr-2" src="../assets/images/2.png" alt="Logo" />
+      ConnectSphere
+    </a>
+    <!-- Desktop navigation links - hidden on mobile -->
+    <div class="hidden md:flex items-center space-x-1">
+      <a
+        href="../feed/index.html"
+        class="active py-2 px-4 text-black hover:text-green-500"
+        >Feed</a
+      >
+      <a
+        href="../profile/index.html"
+        class="py-2 px-4 text-black hover:text-green-500"
+        >Profile</a
+      >
+    </div>
+    <!-- Sign out button - hidden on mobile -->
+    <div class="hidden md:flex items-center space-x-3">
+      <a
+        href="#"
+        class="logout-link py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300"
+        >Sign Out</a
+      >
+    </div>
+    <!-- Mobile menu hamburger button -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-black focus:outline-none">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <img class="w-10 h-10 mr-2" src="../assets/images/2.png" alt="Logo" />
-          ConnectSphere
-        </a>
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href="../feed/index.html"
-            class="active py-2 px-4 text-black hover:text-green-500"
-            >Feed</a
-          >
-          <a
-            href="../profile/index.html"
-            class="py-2 px-4 text-black hover:text-green-500"
-            >Profile</a
-          >
-        </div>
-        <div class="hidden md:flex items-center space-x-3">
-          <a
-            href="../index.html"
-            class="py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300"
-            >Sign Out</a
-          >
-        </div>
-        <div class="md:hidden">
-          <button id="menu-btn" class="text-black focus:outline-none">
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h16"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </nav>
-      <div id="mobile-menu" class="hidden md:hidden">
-        <ul class="flex flex-col items-center space-y-4 p-4">
-          <li>
-            <a
-              href="../index.html"
-              class="block py-2 px-4 text-black hover:text-green-500"
-              >Log Out</a
-            >
-          </li>
-          <li>
-            <a
-              href="../feed/index.html"
-              class="active block py-2 px-4 text-gray-500 hover:text-black"
-              >Feed</a
-            >
-          </li>
-          <li>
-            <a
-              href="../profile/index.html"
-              class="block py-2 px-4 text-gray-500 hover:text-black"
-              >Profile</a
-            >
-          </li>
-        </ul>
-      </div>
-    </header>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  <!-- Mobile menu - hidden by default, toggles with hamburger button -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <ul class="flex flex-col items-center space-y-4 p-4">
+      <li>
+        <a
+          href="#"
+          class="logout-link block py-2 px-4 text-black hover:text-green-500"
+          >Log Out</a
+        >
+      </li>
+      <li>
+        <a
+          href="../feed/index.html"
+          class="active block py-2 px-4 text-gray-500 hover:text-black"
+          >Feed</a
+        >
+      </li>
+      <li>
+        <a
+          href="../profile/index.html"
+          class="block py-2 px-4 text-gray-500 hover:text-black"
+          >Profile</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>
 
+    <!-- Main content area -->
     <main class="container mx-auto p-4 max-w-4xl overflow-x-hidden">
+      <!-- Create post section with form -->
       <section class="w-full p-4 mb-8">
         <h1 class="text-2xl mb-4">Create a New Post</h1>
+        <!-- Dynamic message container for form feedback -->
         <div id="message"></div>
+        <!-- Post creation form with validation -->
         <form id="createPostForm" class="bg-white p-6 rounded shadow-md">
+          <!-- Post title input field -->
           <div class="mb-4">
             <label for="title" class="block text-gray-700 font-bold mb-2"
               >Title</label
@@ -103,6 +116,7 @@
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
+          <!-- Post content textarea -->
           <div class="mb-4">
             <label for="content" class="block text-gray-700 font-bold mb-2"
               >Content</label
@@ -111,10 +125,11 @@
               id="content"
               name="content"
               required
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               rows="4"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             ></textarea>
           </div>
+          <!-- Optional image URL input -->
           <div class="mb-4">
             <label for="imageUrl" class="block text-gray-700 font-bold mb-2"
               >Image url</label
@@ -126,6 +141,7 @@
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
+          <!-- Optional image alt text for accessibility -->
           <div class="mb-4">
             <label for="imageAlt" class="block text-gray-700 font-bold mb-2"
               >Image alt</label
@@ -137,6 +153,7 @@
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
+          <!-- Submit button with hover effects -->
           <button
             type="submit"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none transform hover:-translate-y-1 transition duration-200"
@@ -146,35 +163,44 @@
         </form>
       </section>
 
+      <!-- Posts display section with search and filter -->
       <section class="w-full p-4">
-  <h2 class="text-2xl mb-4">Posts</h2>
-  <div class="mb-4">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 max-w-3xl mx-auto">
-      <div class="w-full sm:w-auto">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search posts..."
-          class="p-2 border rounded w-full"
-        />
-      </div>
-      <div class="w-full sm:w-auto">
-        <input
-          id="filterByAuthor"
-          placeholder="Filter by author name"
-          class="p-2 border rounded w-full"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    id="posts-container"
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-hidden"
-  >
-    <!-- Posts will be appended here -->
-  </div>
-</section>
+        <h2 class="text-2xl mb-4">Posts</h2>
+        <!-- Search and filter controls -->
+        <div class="mb-4">
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 max-w-3xl mx-auto"
+          >
+            <!-- Search posts input - stacks on mobile -->
+            <div class="w-full sm:w-auto">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search posts..."
+                class="p-2 border rounded w-full"
+              />
+            </div>
+            <!-- Filter by author input - stacks on mobile -->
+            <div class="w-full sm:w-auto">
+              <input
+                id="filterByAuthor"
+                placeholder="Filter by author name"
+                class="p-2 border rounded w-full"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Posts grid - responsive layout -->
+        <div
+          id="posts-container"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-hidden"
+        >
+          <!-- Posts will be dynamically inserted here by JavaScript -->
+        </div>
+      </section>
     </main>
+
+    <!-- Footer with copyright -->
     <footer
       class="w-full text-center p-2 bg-gray-200 mt-auto bg-gradient-to-r from-green-100 to-blue-100 shadow-lg"
     >
@@ -182,13 +208,17 @@
         &copy; 2024 ConnectSphere. All rights reserved.
       </p>
     </footer>
+
+    <!-- Edit post modal - hidden by default -->
     <div
       id="edit-post-modal"
       class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden justify-center items-center z-50"
     >
       <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4">
         <h2 class="text-2xl font-bold mb-4">Edit Post</h2>
+        <!-- Edit post form -->
         <form id="edit-post-form" class="space-y-4">
+          <!-- Edit title field -->
           <div>
             <label class="block text-gray-700 font-bold mb-2" for="edit-title"
               >Title</label
@@ -201,6 +231,7 @@
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
+          <!-- Edit content field -->
           <div>
             <label class="block text-gray-700 font-bold mb-2" for="edit-body"
               >Content</label
@@ -209,10 +240,11 @@
               id="edit-body"
               name="body"
               required
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               rows="4"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             ></textarea>
           </div>
+          <!-- Modal action buttons -->
           <div class="flex justify-end space-x-2">
             <button
               type="button"
@@ -233,4 +265,3 @@
     </div>
   </body>
 </html>
-
