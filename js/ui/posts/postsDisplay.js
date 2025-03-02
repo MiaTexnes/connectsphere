@@ -122,23 +122,7 @@ export function displayPosts(posts, reset = false) {
 
     // Generate HTML structure for the post card with admin buttons for own posts
     postElement.innerHTML = `
-    ${
-      isOwnPost
-        ? `
-      <div class="absolute top-2 right-2 z-10 flex space-x-1 justify-center">
-        <a href="/feed/edit.html?id=${id}"
-           class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
-          Edit
-        </a>
-        <button
-           data-id="${id}"
-           class="delete-post-btn bg-red-500 hover:bg-red-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
-          Delete
-        </button>
-      </div>
-    `
-        : ""
-    }
+
     <div class="mb-4 flex items-start">
       <img
         src="${author?.avatar?.url || "../assets/images/2.png"}"
@@ -178,6 +162,23 @@ export function displayPosts(posts, reset = false) {
           View Details
         </button>
       </div>
+      ${
+        isOwnPost
+          ? `
+      <div class="flex space-x-1 justify-center mt-2">
+        <a href="/feed/edit.html?id=${id}"
+           class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
+          Edit
+        </a>
+        <button
+           data-id="${id}"
+           class="delete-post-btn bg-red-500 hover:bg-red-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
+          Delete
+        </button>
+      </div>
+    `
+          : ""
+      }
     </div>
     `;
 
