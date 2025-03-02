@@ -54,7 +54,7 @@ function displayPostDetails(post) {
   if (enableAdminButtons) {
     adminFunctionality = `
       <div>
-        <a href="/feed/edit.html?id=${id}" class="edit-post-link px-6 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">Edit Post</a>
+        <a href="/feed/edit.html?id=${id}" class="edit-post-link px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">Edit Post</a>
         <button class="delete-post-btn px-6 py-2 bg-red-500 hover:bg-red-700 text-white font-bold rounded transition duration-200 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50" data-id="${id}">Delete Post</button>
       </div>
     `;
