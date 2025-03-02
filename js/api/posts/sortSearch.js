@@ -108,14 +108,15 @@ function debounce(func, wait = 300) {
 export function setupSortHandler() {
   // Get search input element
   const searchInput = document.getElementById("searchInput");
+  const filterByAuthorInput = document.getElementById("filterByAuthor");
 
   // Exit if required elements aren't found
   if (!searchInput) {
-    console.warn("Sort or search elements not found in the document");
+    console.warn("Search input element not found in the document");
     return;
   }
 
-  // Function to handle search functionality
+  // Function to handle general search functionality
   const performSearch = async () => {
     const searchTerm = searchInput.value.trim();
     let posts;
@@ -124,7 +125,16 @@ export function setupSortHandler() {
     if (searchTerm !== "") {
       posts = await searchPostsByQuery(searchTerm);
     } else {
-      posts = await fetchPosts(searchTerm);
+      posts = await fetchPosts();
+    }
+
+    // If there's an author filter active, apply it client-side
+    if (filterByAuthorInput && filterByAuthorInput.value.trim() !== "") {
+      const authorFilter = filterByAuthorInput.value.trim().toLowerCase();
+      posts.data = posts.data.filter(post =>
+        post.author && post.author.name &&
+        post.author.name.toLowerCase().includes(authorFilter)
+      );
     }
 
     // Display the filtered posts
@@ -134,6 +144,11 @@ export function setupSortHandler() {
   // Create a debounced version of the search
   const debouncedSearch = debounce(performSearch, 300);
 
-  // Add input event listener with debounced search
+  // Add input event listener with debounced search to search input
   searchInput.addEventListener("input", debouncedSearch);
+
+  // Add author filter functionality if the element exists
+  if (filterByAuthorInput) {
+    filterByAuthorInput.addEventListener("input", debouncedSearch);
+  }
 }
