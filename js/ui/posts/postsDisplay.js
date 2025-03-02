@@ -167,7 +167,7 @@ export function displayPosts(posts, reset = false) {
           ? `
       <div class="flex space-x-1 justify-center mt-2">
         <a href="/feed/edit.html?id=${id}"
-           class="bg-green-600 hover:bg-green-700 text-white text-s font-bold py-1 px-4 rounded transition duration-200">
+           class="bg-green-650 hover:bg-green-750 text-white text-s font-bold py-1 px-4 rounded transition duration-200">
           Edit
         </a>
         <button
