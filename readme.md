@@ -2,11 +2,9 @@
 
 A modern social media platform for connecting, sharing, and interacting with others.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-badge-id/deploy-status)](https://connect-sphere2.netlify.app/)
-
 [✨ Live Site](https://connect-sphere2.netlify.app/) | [📋 Project Board](https://github.com/users/MiaTexnes/projects/2)
 
-![ConnectSphere Demo](assets/demo-screenshot.png)
+![ConnectSphere Demo](/assets/demo-screenshot.png)
 
 ## ✨ Features
 
