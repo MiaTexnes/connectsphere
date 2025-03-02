@@ -1,81 +1,159 @@
-# Welcome to ConnectSphere
+# ConnectSphere 🌐
 
-## Live Site
+A modern social media platform for connecting, sharing, and interacting with others.
 
-https://connect-sphere2.netlify.app/
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-badge-id/deploy-status)](https://connect-sphere2.netlify.app/)
 
-ConnectSphere is a social interaction platform designed to shape the future of social interaction. This project uses Tailwind CSS for styling and includes responsive design elements.
+[✨ Live Site](https://connect-sphere2.netlify.app/) | [📋 Project Board](https://github.com/users/MiaTexnes/projects/2)
 
-## 🔗 Links
+![ConnectSphere Demo](assets/demo-screenshot.png)
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://miatexnes.netlify.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mia-texnes-847b28bb/)
+## ✨ Features
 
-# Social Media App
+### 🔐 User Authentication
+- **Secure Registration** with Noroff email domain validation
+- **Seamless Login/Logout** experience
+- **Profile Management** with customization options
 
-## Project Overview
+### 📱 Social Feed
+- **Create, Edit & Delete** your own posts
+- **Infinite Scrolling** feed with posts from your network
+- **Advanced Search** functionality by content, tags, and authors
+- **Smart Filtering** options to customize your feed
 
-This project involves building a responsive frontend for a social media application using Tailwind CSS and SASS. The goal is to create three main pages: Authentication, Feed, and Profile.
+### 👤 User Profiles
+- **Customizable Profiles** with bio and profile pictures
+- **Activity Tracking** with post history
+- **Follow System** to build your network
+- **Statistics** for followers and following
 
-## Pages
+## 🛠️ Technologies
 
-1. **Authentication Page** (`/index.html`)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
-   - Login and registration form
-   - HTML form validation
-   - Password minimum length: 8 characters
-   - Form action: `/profile`
+### Frontend
+- HTML5 for structure
+- Tailwind CSS for responsive styling
+- JavaScript (ES6+) for interactive features
+- SASS for custom styling extensions
 
-2. **Feed Page** (`/feed/index.html`)
+### Backend Integration
+- **Noroff Social API** with RESTful architecture
+- JWT authentication
+- Secure data handling
 
-   - List of post thumbnails
-   - Search bar
-   - Sort options
-   - Form to create a new post
+## 📋 Getting Started
 
-3. **Profile Page** (`/profile/index.html`)
-   - Profile image
-   - Username
-   - List of user posts
-   - Follow button
-   - Following/followers display
+### Prerequisites
+- Node.js (v14.0.0 or higher)
+- npm (v6.0.0 or higher)
 
-## Technical Requirements
+### Installation
 
-- Use Tailwind CSS for styling (chosen for its flexibility and familiarity)
-- Implement SASS for additional custom styling
-- Ensure responsive design
-- No JavaScript functionality required (except for mobile menu)
+```bash
+# Clone the repository
+git clone https://github.com/MiaTexnes/connectsphere.git
 
-## Development Process
+# Navigate to project directory
+cd connectsphere
 
-1. Create prototypes for each page
-2. Set up a new git branch: `css-frameworks`
-3. Install necessary NPM packages (including Tailwind CSS)
-4. Configure Tailwind CSS
-5. Add scripts to `package.json`:
-   - Development script with watch functionality
-   - Deployment script for production build
-6. Implement the responsive UI using Tailwind classes
-7. Create a Pull Request for review
-8. Deploy the site using Netlify or GitHub Pages
+# Install dependencies
+npm install
 
-## Deployment
+# Start the development server
+npm run dev
+```
 
-- Deploy from the `css-frameworks` branch
-- Use a service like Netlify or GitHub Pages
+## 📁 Project Structure
 
-## Submission Requirements
+```
+connectsphere/
+├── assets/              # Images, icons, and resources
+├── css/                 # Compiled CSS and SASS files
+├── js/                  # JavaScript modules
+│   ├── api/             # API interaction functions
+│   ├── components/      # Reusable UI components
+│   ├── constants/       # Global constants
+│   ├── events/          # Event handlers
+│   └── ui/              # UI manipulation functions
+├── feed/                # Feed page
+├── profile/             # Profile pages
+├── register/            # Registration page
+├── index.html           # Auth page
+├── .gitignore           # Git ignore file
+├── package.json         # Project dependencies
+└── README.md            # Project documentation
+```
 
-1. Open Pull Request link
-2. Deployed site link
-3. Ensure the repository is public
-4. Include a `.gitignore` file (exclude `node_modules`)
+## 📱 Pages & Functionality
 
-## Review Process
+### Authentication Page
+- User-friendly login/register forms
+- Form validation with helpful feedback
+- Secure password handling (minimum 8 characters)
 
-- Share the Pull Request and request peer reviews on Teams
-- Implement suggestions as needed
-- Review peers' Pull Requests
+### Feed Page
+- Real-time post updates
+- Interactive post creation with media support
+- Filtering and sorting options
+
+### Profile Page
+- Comprehensive user information
+- Follow/unfollow functionality
+- Post history with engagement metrics
+
+## 🚀 Development Process
+
+1. **Planning & Design**
+   - Created wireframes and user flows
+   - Defined technical requirements
+
+2. **Implementation**
+   - Set up project architecture
+   - Developed core authentication features
+   - Built feed and profile functionality
+   - Integrated with Noroff API
+
+3. **Styling & Refinement**
+   - Applied Tailwind CSS for responsive design
+   - Added animations and transitions
+   - Implemented accessibility features
+
+4. **Testing & Deployment**
+   - Cross-browser compatibility testing
+   - Performance optimization
+   - Deployed via Netlify
+
+## 🔮 Future Enhancements
+
+- [ ] Real-time notifications system
+- [ ] Direct messaging functionality
+- [ ] Advanced media handling (videos, galleries)
+- [ ] Community groups and events
+- [ ] Dark mode support
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Connect With Me
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://miatexnes.netlify.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mia-texnes-847b28bb/)
 
 ---
+
+> This project was developed as part of the JavaScript 2 course, implementing a social media application using the Noroff Social API.
