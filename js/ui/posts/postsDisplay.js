@@ -118,39 +118,37 @@ export function displayPosts(posts, reset = false) {
     // Create post element container
     const postElement = document.createElement("div");
     postElement.className =
-      "post bg-white p-4 rounded shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col h-[600px] w-full";
+      "post bg-white p-4 rounded shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col h-[470px] w-full";
 
     // Generate HTML structure for the post card with admin buttons for own posts
     postElement.innerHTML = `
-    <div class="mb-4 flex items-start justify-between">
-      <div class="flex items-start">
-        <img
-          src="${author?.avatar?.url || "../assets/images/2.png"}"
-          alt="${author?.name || "Unknown"}'s avatar"
-          class="w-12 h-12 rounded-full mr-4 flex-shrink-0"
-        />
-        <div class="flex-1 min-w-0">
-          <h2 class="text-xl font-bold mb-1 text-gray-800 line-clamp-2">${title}</h2>
-          <p class="text-sm text-gray-600 truncate">By ${authorName}</p>
-        </div>
+    ${
+      isOwnPost
+        ? `
+      <div class="absolute top-2 right-2 z-10 flex space-x-1 justify-center">
+        <a href="/feed/edit.html?id=${id}"
+           class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
+          Edit
+        </a>
+        <button
+           data-id="${id}"
+           class="delete-post-btn bg-red-500 hover:bg-red-700 text-white text-xs font-bold py-1 px-4 rounded transition duration-200">
+          Delete
+        </button>
       </div>
-      ${
-        isOwnPost
-          ? `
-        <div class="flex space-x-1">
-          <a href="/feed/edit.html?id=${id}"
-             class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-2 rounded transition duration-200">
-            Edit
-          </a>
-          <button
-             data-id="${id}"
-             class="delete-post-btn bg-red-500 hover:bg-red-700 text-white text-xs font-bold py-1 px-2 rounded transition duration-200">
-            Delete
-          </button>
-        </div>
-      `
-          : ""
-      }
+    `
+        : ""
+    }
+    <div class="mb-4 flex items-start">
+      <img
+        src="${author?.avatar?.url || "../assets/images/2.png"}"
+        alt="${author?.name || "Unknown"}'s avatar"
+        class="w-12 h-12 rounded-full mr-4 flex-shrink-0"
+      />
+      <div class="flex-1 min-w-0">
+        <h2 class="text-xl font-bold mb-1 text-gray-800 line-clamp-2">${title}</h2>
+        <p class="text-sm text-gray-600 truncate">By ${authorName}</p>
+      </div>
     </div>
     <div class="flex-1 overflow-hidden">
       <div class="h-[300px] mb-3">
