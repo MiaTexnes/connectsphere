@@ -3,6 +3,9 @@ import { fetchPosts } from "../../api/posts/postsApi.js";
 import { sortPosts, searchPosts } from "../../api/posts/sortSearch.js";
 import filterPostsHandler from "../../events/posts/filterPostsHandler.js";
 import { viewPostDetails } from "./postDetailModal.js";
+import { isUsersPost } from "../../events/aut/auth.js";
+import { deletePost } from "../../api/posts/deletePost.js";
+import { displayMessage } from "../common/displayMessage.js";
 
 // Store all posts and current page in module-level variables
 let allPosts = [];
@@ -20,19 +23,35 @@ export async function initializeFeedPage(
   searchTerm = ""
 ) {
   try {
-    // Reset pagination when initializing feed
+    // Reset pagination on initialization
     currentPage = 0;
 
+    // Fetch all posts from the API
     const posts = await fetchPosts();
-    if (posts && posts.data) {
-      let filteredPosts = searchPosts(posts.data, searchTerm);
-      allPosts = sortPosts(filteredPosts, sortCriteria);
-      displayPosts({ data: allPosts }, true); // true to reset pagination
-      filterPostsHandler(allPosts);
+
+    // Store all posts for sorting and filtering
+    allPosts = posts.data;
+
+    // Apply sorting based on the provided criteria
+    let sortedPosts = allPosts;
+    if (sortCriteria) {
+      sortedPosts = sortPosts(allPosts, sortCriteria);
     }
+
+    // Apply search filtering if provided
+    let filteredPosts = sortedPosts;
+    if (searchTerm) {
+      filteredPosts = searchPosts(sortedPosts, searchTerm);
+    }
+
+    // Display the processed posts
+    const postsForDisplay = { data: filteredPosts };
+    displayPosts(postsForDisplay, true);
+
+    // Set up filter by author functionality
+    filterPostsHandler(filteredPosts);
   } catch (error) {
-    // Handle errors with fetch operation
-    alert("Failed to fetch posts: " + error.message);
+    console.error("Error initializing feed page:", error);
   }
 }
 
@@ -93,23 +112,45 @@ export function displayPosts(posts, reset = false) {
       imageAlt = media.alt;
     }
 
+    // Check if current user is the post author
+    const isOwnPost = isUsersPost(authorName);
+
     // Create post element container
     const postElement = document.createElement("div");
     postElement.className =
       "post bg-white p-4 rounded shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col h-[600px] w-full";
 
-    // Generate HTML structure for the post card
+    // Generate HTML structure for the post card with admin buttons for own posts
     postElement.innerHTML = `
-    <div class="mb-4 flex items-start">
-      <img
-        src="${author?.avatar?.url || "../assets/images/2.png"}"
-        alt="${author?.name || "Unknown"}'s avatar"
-        class="w-12 h-12 rounded-full mr-4 flex-shrink-0"
-      />
-      <div class="flex-1 min-w-0">
-        <h2 class="text-xl font-bold mb-1 text-gray-800 line-clamp-2">${title}</h2>
-        <p class="text-sm text-gray-600 truncate">By ${authorName}</p>
+    <div class="mb-4 flex items-start justify-between">
+      <div class="flex items-start">
+        <img
+          src="${author?.avatar?.url || "../assets/images/2.png"}"
+          alt="${author?.name || "Unknown"}'s avatar"
+          class="w-12 h-12 rounded-full mr-4 flex-shrink-0"
+        />
+        <div class="flex-1 min-w-0">
+          <h2 class="text-xl font-bold mb-1 text-gray-800 line-clamp-2">${title}</h2>
+          <p class="text-sm text-gray-600 truncate">By ${authorName}</p>
+        </div>
       </div>
+      ${
+        isOwnPost
+          ? `
+        <div class="flex space-x-1">
+          <a href="/feed/edit.html?id=${id}"
+             class="bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold py-1 px-2 rounded transition duration-200">
+            Edit
+          </a>
+          <button
+             data-id="${id}"
+             class="delete-post-btn bg-red-500 hover:bg-red-700 text-white text-xs font-bold py-1 px-2 rounded transition duration-200">
+            Delete
+          </button>
+        </div>
+      `
+          : ""
+      }
     </div>
     <div class="flex-1 overflow-hidden">
       <div class="h-[300px] mb-3">
@@ -140,11 +181,40 @@ export function displayPosts(posts, reset = false) {
         </button>
       </div>
     </div>
-  `;
+    `;
 
     // Add event listener for view details button
     const viewButton = postElement.querySelector(".view-post-btn");
     viewButton.addEventListener("click", () => viewPostDetails(id));
+
+    // Add event listener for delete button if it exists
+    const deleteButton = postElement.querySelector(".delete-post-btn");
+    if (deleteButton) {
+      deleteButton.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        const postId = event.target.dataset.id;
+        const shouldDelete = confirm(
+          "Are you sure you want to delete this post?"
+        );
+
+        if (shouldDelete) {
+          try {
+            await deletePost(postId);
+            displayMessage("#message", "success", "Post deleted successfully!");
+            // Refresh posts after deletion
+            setTimeout(() => {
+              initializeFeedPage();
+            }, 1000);
+          } catch (error) {
+            displayMessage(
+              "#message",
+              "error",
+              `Failed to delete post: ${error.message}`
+            );
+          }
+        }
+      });
+    }
 
     // Add the post card to the container
     postsContainer.appendChild(postElement);
