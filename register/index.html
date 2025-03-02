@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Essential meta tags for character encoding and responsive viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | ConnectSphere</title>
+    <!-- External stylesheets and scripts -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/index.js" type="module"></script>
+  </head>
+  <!-- Body with responsive layout that changes from column to row at medium breakpoint -->
+  <body
+    class="flex flex-col md:flex-row items-center justify-center h-screen index-background"
+  >
+    <!-- Header section with branding - takes full width on mobile, half on desktop -->
+    <header class="w-full md:w-1/2 text-left p-4">
+      <h1 class="text-3xl md:text-6xl">ConnectSphere</h1>
+      <p class="text-1xl md:text-2xl text-left p-4 italic">
+        Shaping the Future of Social Interaction
+      </p>
+    </header>
+
+    <!-- Main content area with registration form -->
+    <main class="w-full md:w-1/2 p-4">
+      <section class="flex justify-center w-full p-4">
+        <!-- Registration form with validation -->
+        <form
+          id="registerForm"
+          action="/profile"
+          class="w-full max-w-lg mx-auto p-6 bg-white rounded shadow-md"
+        >
+          <!-- Dynamic message container for form feedback -->
+          <div id="message"></div>
+
+          <!-- Username input field with validation -->
+          <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2"
+              >Username</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="username"
+              required
+              minlength="3"
+              maxlength="20"
+              autocomplete="username"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <!-- Hidden error message for username validation -->
+            <p class="text-red-500 text-xs italic hidden" id="username-error">
+              Please enter a username
+            </p>
+          </div>
+
+          <!-- Email input field with Noroff domain validation -->
+          <div class="mb-4">
+            <label
+              for="email"
+              class="form-label block text-gray-700 font-bold mb-2"
+              >Email address</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              pattern="^[^@]+@(stud\.|)(noroff\.no)$"
+              required
+              autocomplete="email"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <!-- Hidden error message for email validation -->
+            <p class="text-red-500 text-xs italic hidden" id="email-error">
+              Please provide a noroff.no or stud.noroff.no email address
+            </p>
+          </div>
+
+          <!-- Password input field with minimum length validation -->
+          <div class="mb-4">
+            <label for="password" class="block text-gray-700 font-bold mb-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              minlength="8"
+              autocomplete="new-password"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <!-- Hidden error message for password validation -->
+            <p class="text-red-500 text-xs italic hidden" id="password-error">
+              Please enter a password with at least 8 characters
+            </p>
+          </div>
+
+          <!-- Form submission and login redirect section -->
+          <div class="flex flex-col space-y-4 visible w-full">
+            <!-- Submit button with hover effect -->
+            <button
+              type="submit"
+              id="create-user-btn"
+              class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none w-full"
+            >
+              Create Account
+            </button>
+
+            <!-- Login redirect for existing users -->
+            <div class="text-center mt-4">
+              <p class="text-gray-600">
+                I already have an account?
+                <a
+                  href="../index.html"
+                  class="text-blue-700 font-bold hover:text-blue-500 underline transition-colors"
+                >
+                  Login here
+                </a>
+              </p>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
