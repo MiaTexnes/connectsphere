@@ -3,24 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
+    <title>Jane Doe's Profile | ConnectSphere</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css"
-    />
     <script src="../index.js" defer></script>
   </head>
-  <body
-    class="flex flex-col items-center justify-center min-h-screen bg-gray-100"
-  >
+  <body class="flex flex-col items-center min-h-screen bg-gray-100">
     <header
-      class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full fixed top-0"
+      class="bg-gradient-to-r from-green-100 to-blue-100 shadow-lg w-full"
     >
       <nav class="container mx-auto flex justify-between items-center p-4">
-        <a href="/" class="text-3xl font-bold italic text-black"
-          >ConnectSphere</a
+        <a
+          href="/"
+          class="flex items-center text-3xl font-bold italic text-black"
         >
+          <img class="w-10 h-10 mr-2" src="/images/2.png" alt="Logo" />
+          ConnectSphere
+        </a>
         <div class="hidden md:flex items-center space-x-1">
           <a
             href="../feed/index.html"
@@ -29,24 +27,17 @@
           >
           <a
             href="../profile/index.html"
-            class="py-2 px-4 text-black hover:text-green-500"
+            class="active py-2 px-4 text-black hover:text-green-500"
             >Profile</a
           >
         </div>
-
         <div class="hidden md:flex items-center space-x-3">
           <a
-            href="#"
-            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
-            >Log In</a
-          >
-          <a
-            href="#"
-            class="py-4 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
-            >Sign Up</a
+            href="../index.html"
+            class="py-4 px-2 font-medium text-gray-600 rounded hover:bg-green-500 hover:text-white transition duration-300"
+            >Sign Out</a
           >
         </div>
-
         <div class="md:hidden">
           <button id="menu-btn" class="text-black focus:outline-none">
             <svg
@@ -72,7 +63,7 @@
             <a
               href="../index.html"
               class="block py-2 px-4 text-black hover:text-green-500"
-              >Login</a
+              >Log Out</a
             >
           </li>
           <li>
@@ -85,7 +76,7 @@
           <li>
             <a
               href="../profile/index.html"
-              class="block py-2 px-4 text-gray-500 hover:text-black"
+              class="active block py-2 px-4 text-gray-500 hover:text-black"
               >Profile</a
             >
           </li>
@@ -93,21 +84,98 @@
       </div>
     </header>
 
-    <main class="w-full p-4 mt-16">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="flex flex-col md:flex-row items-center">
+    <main class="w-full p-4 mt-16 container max-w-4xl">
+      <section class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex flex-col md:flex-row items-center justify-between">
           <img
-            src="../images/profile.jpg"
+            src="/images/mary.jpeg"
             alt="Profile Picture"
             class="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-4"
           />
           <div>
-            <h2 class="text-2xl font-bold">Jane Doe</h2>
+            <h1 class="text-2xl font-bold">Jane Doe</h1>
             <p class="text-gray-600">Age: 34</p>
             <p class="text-gray-600">Mother of two wonderful kids</p>
+            <p class="text-gray-600">Job: Software Engineer</p>
+            <p class="text-gray-600">Hobbies: Hiking, Reading, Cooking</p>
+            <p class="text-gray-600">Location: San Francisco, CA</p>
+          </div>
+          <div class="bg-white p-6 mt-6">
+            <h2 class="text-xl font-bold mb-4">Followers</h2>
+            <p class="text-gray-600 mb-4">235 Followers</p>
+            <h2 class="text-xl font-bold mb-4">Following</h2>
+            <p class="text-gray-600 mb-4">194 Following</p>
           </div>
         </div>
-      </div>
+        <div class="flex justify-center mt-6 space-x-4">
+          <button
+            type="button"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+          >
+            Follow
+          </button>
+          <button
+            type="button"
+            class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none"
+          >
+            Unfollow
+          </button>
+        </div>
+      </section>
+      <section class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h3 class="text-xl font-bold mb-4">About Me</h3>
+        <p class="text-gray-600">
+          Hi, I'm Jane! I'm a passionate software engineer with over 10 years of
+          experience in the tech industry. I love exploring new technologies and
+          working on innovative projects. In my free time, I enjoy hiking in the
+          mountains, reading mystery novels, and experimenting with new recipes
+          in the kitchen. I'm also a proud mother of two amazing kids who keep
+          me on my toes. I'm always looking to connect with like-minded
+          individuals and share knowledge and experiences.
+        </p>
+      </section>
+      <section class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h3 class="text-xl font-bold mb-4">Skills</h3>
+        <ul class="list-disc list-inside text-gray-600">
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>Python</li>
+          <li>Machine Learning</li>
+          <li>Cloud Computing</li>
+        </ul>
+      </section>
+
+      <section class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <h3 class="text-xl font-bold mb-4">Posts</h3>
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">Exploring the Mountains</h4>
+            <p class="text-gray-600">
+              Had an amazing time hiking in the mountains last weekend. The
+              views were breathtaking!
+            </p>
+          </div>
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">New Recipe: Chocolate Cake</h4>
+            <p class="text-gray-600">
+              Tried a new recipe for chocolate cake and it turned out delicious.
+              Highly recommend!
+            </p>
+          </div>
+          <div class="p-4 bg-gray-100 rounded-lg shadow">
+            <h4 class="text-lg font-bold">Tech Conference 2023</h4>
+            <p class="text-gray-600">
+              Attended the Tech Conference 2023 and learned a lot about the
+              latest trends in technology.
+            </p>
+          </div>
+          <!-- Add more posts as needed -->
+        </div>
+      </section>
     </main>
+    <footer class="w-full text-center p-2 bg-gray-200 mt-auto bg-gradient-to-r from-green-100 to-blue-100 shadow-lg">
+      <p class="text-gray-700  py-2 text-center">&copy; 2024 ConnectSphere. All rights reserved.</p>
+    </footer>
   </body>
 </html>
