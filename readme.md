@@ -52,7 +52,6 @@ This project involves building a responsive frontend for a social media applicat
 2. **Feed Page** (`/feed/index.html`)
    - List of post thumbnails
    - Search bar
-   - Sort options
    - Form to create a new post
 
 3. **Profile Page** (`/profile/index.html`)
