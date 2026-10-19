@@ -1,13 +1,34 @@
-
-
-
-
-
 # Welcome to ConnectSphere
 ## Live Site
 https://connect-sphere1.netlify.app/
 
 ConnectSphere is a social interaction platform designed to shape the future of social interaction. This project uses Tailwind CSS for styling and includes responsive design elements.
+
+## Clone
+
+```bash
+git clone -b css-frameworks https://github.com/MiaTexnes/connectsphere.git
+cd connectsphere
+```
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+`npm run dev` compiles Tailwind from `css/input.css` to `css/style.css` and watches for changes. Open the site with a static server:
+
+```bash
+npx live-server
+```
+
+Production CSS build:
+
+```bash
+npm run build
+```
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://miatexnes.netlify.app/)
@@ -80,4 +101,3 @@ This project involves building a responsive frontend for a social media applicat
 - Review peers' Pull Requests
 
 ---
-
